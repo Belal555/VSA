@@ -36,20 +36,33 @@
 # else:
 #     print "you can't drive!"
 
-name = raw_input("Enter your name: ")
-birth_month = raw_input("Enter your birth month: ")
-birth_day = raw_input("Enter your birth day: ")
-# a = int(birth_month) - 7
-# b = int(birth_day) - 9
-c = name
-current_month = 7
-current_day = 9
-if birth_month > current_month:
-    a = int(birth_month) - 7
+# name = raw_input("Enter your name: ")
+# birth_month = raw_input("Enter your birth month: ")
+# birth_day = raw_input("Enter your birth day: ")
+# # a = int(birth_month) - 7
+# # b = int(birth_day) - 9
+# c = name
+# current_month = int(7)
+# current_day = int(9)
+# if int(birth_month) > int(current_month):
+#     a = int(birth_month) - int(7)
+# else:
+#     a = 12 - (int(7) - int(birth_month))
+# if int(birth_day) > int(current_day):
+#     b = int(birth_day) - int(9)
+# else:
+#     b = 30 - (int(9) - int(birth_day))
+# print c, "your birthday is in" ,a, "months and" ,b, "days!"
+
+user_age = raw_input("Enter your age: ")
+if user_age < 6:
+    print "You can only watch G movies."
 else:
-    a = 7 - int(birth_month)
-if birth_day > current_day:
-    b = int(birth_day) - 9
-else:
-    b = 9 - int(birth_day)
-print c, "your birthday is in" ,a, "months and" ,b, "days!"
+    print "You can't watch PG, PG-13, and R movies."
+# if user_age < 10 and user_age > 6:
+#     print "You can watch G and PG movies."
+# if user_age < 16 and user_age > 6:
+#     print "You can watch G, PG, and PG-13 movies."
+# if user_age > 18:
+#     print "You can watch G, PG, PG-13, and R movies."
+
