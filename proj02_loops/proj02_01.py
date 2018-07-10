@@ -17,3 +17,31 @@
 # Enter a number to sum, or 0 to indicate you are finished: 10
 # Enter a number to sum, or 0 to indicate you are finished: 0
 #The sum of your numbers is: 21
+
+# counter = 0
+
+#key word while
+# while counter <= 10:
+#     break
+#     print counter
+#     counter = counter + 1
+#     s = s + a
+#     if counter == 5:
+#         break
+#while True:
+
+counter = 0
+
+sum = 0
+
+
+# while counter == 0:
+#     user_n = int(raw_input("Enter a number to sum:"))
+#     print user_n
+#     sum = sum + user_n
+#     if user_n == 0:
+#         print sum
+#         print "The sum of your numbers is:", sum
+#         break
+
+
