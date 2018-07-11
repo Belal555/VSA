@@ -73,8 +73,18 @@ for letter in lst:
     counter = counter + 1
 print blank
 
-alphabet = "abcdefghigklmnopqrstuvwxyz"
-print alphabet
+
+# alphabet = "Available letters: abcdefghigklmnopqrstuvwxyz"
+# print alphabet
+
+var = string.lowercase
+print var
+var = var.replace(user_input, "")
+print var
+# if letter = user_input:
+
+
+
 
 
 
