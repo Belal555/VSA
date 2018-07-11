@@ -12,10 +12,11 @@ import string
 
 WORDLIST_FILENAME = "words.txt"
 
+
 def load_words():
     """
     Returns a list of valid words. Words are strings of lowercase letters.
-    
+
     Depending on the size of the word list, this function may
     take a while to finish.
     """
@@ -29,6 +30,7 @@ def load_words():
     print "  ", len(wordlist), "words loaded."
     return wordlist
 
+
 def choose_word(wordlist):
     """
     wordlist (list): list of words (strings)
@@ -36,6 +38,7 @@ def choose_word(wordlist):
     Returns a word from wordlist at random
     """
     return random.choice(wordlist)
+
 
 # end of helper code
 # -----------------------------------
@@ -46,3 +49,33 @@ def choose_word(wordlist):
 wordlist = load_words()
 
 # your code begins here!
+
+word = choose_word(wordlist)
+random = word
+lst = []
+for letter in random:
+    lst.append(letter)
+print lst
+
+blank = []
+for letter in random:
+    blank.append("_")
+print blank
+
+print "Welcome to Hangman!"
+print "I am thinking of a word that is" ,len(lst), "letters long!"
+
+user_input = raw_input("Choose a letter!")
+counter = 0
+for letter in lst:
+    if user_input == lst[counter]:
+        blank[counter] = user_input
+    counter = counter + 1
+print blank
+
+alphabet = "abcdefghigklmnopqrstuvwxyz"
+print alphabet
+
+
+
+
