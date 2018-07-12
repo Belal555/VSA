@@ -70,17 +70,31 @@ guess = 10
 var = string.lowercase
 print "Available letters:" ,var
 
+win = False
 while guess > 0 and guess <= 10:
+    if ("_") not in blank:
+        win = True
+        print ""
+        print "------------------"
+        print ""
+        print "YAAAASSSSSSS QUEEN YOU WON!!!! <3"
+        break
     user_input = raw_input("Choose a letter! ")
+    print ""
+    print "--------------------"
+    print ""
     guess = guess - 1
     print "You have", int(guess), "left! "
     for letter in lst:
         if user_input == lst[counter]:
             blank[counter] = user_input
         counter = counter + 1
-        if ("_") not in blank:
-            print "YAAAASSSS QUEEN YOU WON!!!! <3"
-            break
+        # if ("_") not in blank:
+        #     print "YAAAASSSSSSS QUEEN YOU WON!!!! <3"
+        #     break
+        # if ("_") in blank:
+        #     print "You lost stupid </3"
+        #     break
         # if guess > 10:
         #     print "You lose! TRY AGAIN"
 
@@ -94,6 +108,13 @@ while guess > 0 and guess <= 10:
         var = var.replace(user_input, "")
     print "Available letters:" ,var
     counter = 0
+if win == False:
+    print ""
+    print "------------------"
+    print ""
+    print "Oh no bby you lost :( </3"
+if win == True:
+    guess = 0
 
 
 # if letter = user_input:
