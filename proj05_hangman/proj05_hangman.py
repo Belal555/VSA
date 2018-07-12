@@ -1,5 +1,5 @@
-# Name:
-# Date:
+# Name: Belal and Mia   
+# Date: 7/11/18
 
 
 # proj05: Hangman
@@ -65,22 +65,37 @@ print blank
 print "Welcome to Hangman!"
 print "I am thinking of a word that is" ,len(lst), "letters long!"
 
-user_input = raw_input("Choose a letter!")
 counter = 0
-for letter in lst:
-    if user_input == lst[counter]:
-        blank[counter] = user_input
-    counter = counter + 1
-print blank
-
-
-# alphabet = "Available letters: abcdefghigklmnopqrstuvwxyz"
-# print alphabet
-
+guess = 10
 var = string.lowercase
-print var
-var = var.replace(user_input, "")
-print var
+print "Available letters:" ,var
+
+while guess > 0 and guess <= 10:
+    user_input = raw_input("Choose a letter! ")
+    guess = guess - 1
+    print "You have", int(guess), "left! "
+    for letter in lst:
+        if user_input == lst[counter]:
+            blank[counter] = user_input
+        counter = counter + 1
+        if ("_") not in blank:
+            print "YAAAASSSS QUEEN YOU WON!!!! <3"
+            break
+        # if guess > 10:
+        #     print "You lose! TRY AGAIN"
+
+    # guess = guess - 1
+    # print "You have", int(guess), "left! "
+    print blank
+
+    # var = string.lowercase
+    # print "Letters left:" ,var
+    if user_input in blank:
+        var = var.replace(user_input, "")
+    print "Available letters:" ,var
+    counter = 0
+
+
 # if letter = user_input:
 
 
