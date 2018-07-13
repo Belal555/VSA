@@ -55,7 +55,7 @@ random = word
 lst = []
 for letter in random:
     lst.append(letter)
-print lst
+#print lst
 
 blank = []
 for letter in random:
@@ -66,12 +66,12 @@ print "Welcome to Hangman!"
 print "I am thinking of a word that is" ,len(lst), "letters long!"
 
 counter = 0
-guess = 10
+guess = 20
 var = string.lowercase
 print "Available letters:" ,var
 
 win = False
-while guess > 0 and guess <= 10:
+while guess > 0 and guess <= 20:
     if ("_") not in blank:
         win = True
         print ""
@@ -108,7 +108,14 @@ while guess > 0 and guess <= 10:
         var = var.replace(user_input, "")
     print "Available letters:" ,var
     counter = 0
+    # if user_input not in var:
+    #     print "You've already chosen this letter! TRY AGAIN"
+    #     guess = guess + 1
 if win == False:
+    print ""
+    print "------------------"
+    print ""
+    print lst
     print ""
     print "------------------"
     print ""
