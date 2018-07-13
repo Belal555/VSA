@@ -81,8 +81,8 @@
 # 3: Write a for loop that goes through each letter in the list vowels. If the current
 # letter is 'b', print out the index of the current letter (should print out the
 # number 1).
-counter = 0
-vowels = ['a', 'b', 'i', 'o', 'u', 'y']
+
+# vowels = ['a', 'b', 'i', 'o', 'u', 'y']
 # for letter in vowels:
 #     if letter == 'b':
 #         counter = counter + 1
@@ -93,22 +93,38 @@ vowels = ['a', 'b', 'i', 'o', 'u', 'y']
 
 
 # 4: use the index found to change the list vowels so that the b is replaced with an e.
-
-for item in vowels:
-    if item == 'b':
-        vowels[counter] = 'e'
-        counter = counter + 1
-        print vowels
+# counter = 0
+# for item in vowels:
+#     if item == 'b':
+#         vowels[counter] = 'e'
+#     counter = counter + 1
+# print vowels
 
 # 5: Loop through each letter in the sentence_string. For each letter, check to see if the
 #  number is in the vowels list. If the letter is in the vowels list, add one to a
 # counter. Print out the counter at the end of the loop. This counter should show how
 # many vowels are in sentence_string.
 
-
+# sentence_string = "Hello, my name is Monty Python."
+vowels = ['a', 'b', 'i', 'o', 'y']
+# counter = 0
+# for item in sentence_string:
+#     if item in vowels:
+#            counter = counter + 1
+# print counter
 
 # 6: Make a new function called "vowelFinder" that will return a list of  the vowels
 # found in a list (no duplicates).The function's parameters should be "list" and "vowels."
+v = "earth"
+sentence_list = []
+def vowelfinder(sentence_list, vowels):
+    vowel_list = []
+    for letter in vowels:
+        if letter in sentence_list:
+            sentence_list.append(letter)
+            return [sentence_list]
+
+print vowelfinder(v, vowels)
 
 
 #  Example:
