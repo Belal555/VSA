@@ -60,23 +60,39 @@ def get_frequency_dict(sequence):
 
 #
 # Problem #1: Scoring a word
-#
+word = raw_input("Enter a word:")
+# y = len(word)
+# dict = {'b': 1, 'g': 1, 'q': 1, 'u': 2, 'y': 1, 'z': 1}
+# n = dict
 def get_word_score(word, n):
-    """
-    Returns the score for a word. Assumes the word is a
-    valid word.
+    player1_score = []
+    for item in word:
+        x = SCRABBLE_LETTER_VALUES.get(item, 0)
+        player1_score.append(x)
+    score = sum(player1_score) * len(word)
+    if len(word) == n:
+       score = score + int(50)
+    return(score)
 
-	The score for a word is the sum of the points for letters
-	in the word multiplied by the length of the word, plus 50
-	points if all n letters are used on the first go.
+print get_word_score(word, 7)
 
-	Letters are scored as in Scrabble; A is worth 1, B is
-	worth 3, C is worth 3, D is worth 2, E is worth 1, and so on.
 
-    word: string (lowercase letters)
-    returns: int >= 0
-    """
-    # TO DO...
+    # """
+    #     # # Returns the score for a word. Assumes the word is a
+    #     # # valid word.
+    #     # #
+    #     # # The score for a word is the sum of the points for letters
+    #     # # in the word multiplied by the length of the word, plus 50
+    #     # # points if all n letters are used on the first go.
+    #     # #
+    #     # # Letters are scored as in Scrabble; A is worth 1, B is
+    #     # # worth 3, C is worth 3, D is worth 2, E is worth 1, and so on.
+    #     # #
+    #     # # word: string (lowercase letters)
+    #     # # returns: int >= 0
+    #     # # """
+    #     # # # TO DO...
+
     
 #
 # Make sure you understand how this function works and what it does!
@@ -228,3 +244,29 @@ def play_game(word_list):
 if __name__ == '__main__':
     word_list = load_words()
     play_game(word_list)
+
+#defining a dictionary
+
+# #empty
+# dict1 = {}
+# dict2= {'item1' : 1, 'item2' : 3}
+#
+# print dict
+# print dict2
+#
+# list1 = ["a"] + [2]
+# # list1.append[2]
+# print list1
+#
+# #add something to a dictionary
+# dict1['today'] = "monday"
+#
+# #get something
+# print dict1['today']
+#
+# #get something safely (value)
+# print dict1.get("tomorrow", 0)
+#
+# #looping dictionaries
+# for item in dict2:
+#     print item, dict2[item]
