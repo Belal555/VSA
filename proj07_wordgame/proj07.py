@@ -59,22 +59,26 @@ def get_frequency_dict(sequence):
 # -----------------------------------
 
 #
-# Problem #1: Scoring a word
-word = raw_input("Enter a word:")
-# y = len(word)
-# dict = {'b': 1, 'g': 1, 'q': 1, 'u': 2, 'y': 1, 'z': 1}
-# n = dict
-def get_word_score(word, n):
-    player1_score = []
-    for item in word:
-        x = SCRABBLE_LETTER_VALUES.get(item, 0)
-        player1_score.append(x)
-    score = sum(player1_score) * len(word)
-    if len(word) == n:
-       score = score + int(50)
-    return(score)
 
-print get_word_score(word, 7)
+
+
+# # Problem #1: Scoring a word
+# word = raw_input("Enter a word:")
+# # y = len(word)
+# # dict = {'b': 1, 'g': 1, 'q': 1, 'u': 2, 'y': 1, 'z': 1}
+# # n = dict
+# def get_word_score(word, n):
+#     player1_score = []
+#     for item in word:
+#         x = SCRABBLE_LETTER_VALUES.get(item, 0)
+#         player1_score.append(x)
+#     score = sum(player1_score) * len(word)
+#     if len(word) == n:
+#        score = score + int(50)
+#     return(score)
+#
+# print get_word_score(word, 7)
+
 
 
     # """
@@ -145,6 +149,8 @@ def deal_hand(n):
 #
 # Problem #2: Update a hand by removing letters
 #
+hand = {'a':1, 'x':2, 'l':3, 'e':1}
+# word = "axel"
 def update_hand(hand, word):
     """
     Assumes that 'hand' has all the letters in word.
@@ -163,6 +169,19 @@ def update_hand(hand, word):
     """
     # TO DO ...
 
+    hand_copy = hand.copy()
+    for letter in word:
+        hand_copy[letter] = letter - 1
+
+    return hand_copy
+
+print update_hand(hand_copy, "axel")
+
+            #turn input into a hand
+            #subtract 1 from the correct spot in the hand
+            #print new hand
+
+
 #
 # Problem #3: Test word validity
 #
@@ -177,7 +196,8 @@ def is_valid_word(word, hand, word_list):
     word_list: list of lowercase strings
     """
     # TO DO...
-
+    if letter not in hand:
+        print Not allowed
 def calculate_handlen(hand):
     handlen = 0
     for v in hand.values():
