@@ -198,19 +198,25 @@ def is_valid_word(word, hand, word_list):
     """
     # # TO DO...
     if word in word_list:
-
-        for letter in word:
-            # counter = 0
+        while True:
             if letter in hand:
-                # counter = counter + 1
+
                 return True
-                # print word
             else:
                 return False
-                # print "Invalid Word"
-    else:
-        print "Invalid Word"
-        return False
+
+    #     for letter in word:
+    #         # counter = 0
+    #         if letter in hand:
+    #             # counter = counter + 1
+    #             return True
+    #             # print word
+    #         else:
+    #             return False
+    #             # print "Invalid Word"
+    # else:/Users/peabody/Downloads/VSA-master - B/proj07_wordgame/proj07.py:214
+    #     print "Invalid Word"
+    #     return False
 
 print is_valid_word(word, hand, word_list)
 
