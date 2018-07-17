@@ -114,7 +114,7 @@ def display_hand(hand):
     for letter in hand.keys():
         for j in range(hand[letter]):
              print letter,              # print all on the same line
-    print hand                                # print an empty line
+    # print hand                                # print an empty line
 
 #
 # Make sure you understand how this function works and what it does!
@@ -240,14 +240,13 @@ def calculate_handlen(hand):
 #
 # Problem #4: Playing a hand
 hand2 = deal_hand(7)
-print hand2
+# print hand2
 word_list = load_words()
 
 def play_hand(hand2):
-    print hand2
-    display_hand(hand2)
+    print "Current Hand:" ,display_hand(hand2)
     score = 0
-    user_word = raw_input("Enter a word: ")
+    user_word = raw_input("Enter a word, or a x to indicate that you are finished: ")
     valid_word = is_valid_word(user_word, hand2, word_list)
     if valid_word == False:
         print word
@@ -260,7 +259,10 @@ def play_hand(hand2):
         print score == score + get_word_score(word, 7)
         if calculate_handlen(hand) == 0:
             print "Not allowed"
-
+    elif user_word == "x":
+        print "Game Over"
+        break
+    print "Total Points:"
 
 
 
