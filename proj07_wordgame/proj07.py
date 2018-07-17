@@ -2,7 +2,7 @@
 # Date:
 
 # proj07: Word Game
-
+import random
 
 VOWELS = 'aeiou'
 CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
@@ -114,7 +114,7 @@ def display_hand(hand):
     for letter in hand.keys():
         for j in range(hand[letter]):
              print letter,              # print all on the same line
-    print                               # print an empty line
+    print hand                                # print an empty line
 
 #
 # Make sure you understand how this function works and what it does!
@@ -131,7 +131,7 @@ def deal_hand(n):
     n: int >= 0
     returns: dictionary (string -> int)
     """
-    hand={}
+    hand = {}
     num_vowels = n / 3
     
     for i in range(num_vowels):
@@ -147,7 +147,7 @@ def deal_hand(n):
 #
 # Problem #2: Update a hand by removing letters
 #
-hand = {'a':1, 'x':2, 'l':3, 'e':1}
+
 def update_hand(hand, word):
     hand_copy = hand.copy()
     for letter in word:
@@ -156,8 +156,7 @@ def update_hand(hand, word):
     return hand_copy
 
 
-print update_hand(hand, "axel")
-
+print update_hand
     # """
     # Assumes that 'hand' has all the letters in word.
     # In other words, this assumes that however many times
@@ -185,8 +184,9 @@ print update_hand(hand, "axel")
 #
 # Problem #3: Test word validity
 
-word = raw_input("Enter a word:")
+
 def is_valid_word(word, hand, word_list):
+
     """
     Returns True if word is in the word_list and is entirely
     composed of letters in the hand. Otherwise, returns False.
@@ -197,13 +197,22 @@ def is_valid_word(word, hand, word_list):
     word_list: list of lowercase strings
     """
     # # TO DO...
-    if word in word_list:
-        while True:
-            if letter in hand:
+    hand2 = hand.copy()
+    valid_word = True
+    if word not in word_list:
+        valid_word = False
+    for letter in word:
+        if letter not in hand2:
+            valid_word = False
+        elif hand2[letter] == 0:
+            valid_word = False
+        else:
+            hand2[letter] = hand2[letter] - 1
 
-                return True
-            else:
-                return False
+    return valid_word
+
+print is_valid_word
+
 
     #     for letter in word:
     #         # counter = 0
@@ -218,7 +227,6 @@ def is_valid_word(word, hand, word_list):
     #     print "Invalid Word"
     #     return False
 
-print is_valid_word(word, hand, word_list)
 
 
     # if letter not in hand:
@@ -231,35 +239,62 @@ def calculate_handlen(hand):
 
 #
 # Problem #4: Playing a hand
-#
-def play_hand(hand, word_list):
+hand2 = deal_hand(7)
+print hand2
+word_list = load_words()
 
-    """
-    Allows the user to play the given hand, as follows:
+def play_hand(hand2):
+    print hand2
+    display_hand(hand2)
+    score = 0
+    user_word = raw_input("Enter a word: ")
+    valid_word = is_valid_word(user_word, hand2, word_list)
+    if valid_word == False:
+        print word
+        #print hand2
+        print "Invalid word "
+    elif valid_word == True:
+        print get_word_score(word, 7)
+        hand = update_hand(hand2, word)
+        print user_word
+        print score == score + get_word_score(word, 7)
+        if calculate_handlen(hand) == 0:
+            print "Not allowed"
 
-    * The hand is displayed.
-    
-    * The user may input a word.
 
-    * An invalid word is rejected, and a message is displayed asking
-      the user to choose another word.
 
-    * When a valid word is entered, it uses up letters from the hand.
 
-    * After every valid word: the score for that word is displayed,
-      the remaining letters in the hand are displayed, and the user
-      is asked to input another word.
 
-    * The sum of the word scores is displayed when the hand finishes.
 
-    * The hand finishes when there are no more unused letters.
-      The user can also finish playing the hand by inputing a single
-      period (the string '.') instead of a word.
+play_hand(hand2)
 
-      hand: dictionary (string -> int)
-      word_list: list of lowercase strings
-      
-    """
+    #
+    # """
+    # Allows the user to play the given hand, as follows:
+    #
+    # * The hand is displayed.
+    #
+    # * The user may input a word.
+    #
+    # * An invalid word is rejected, and a message is displayed asking
+    #   the user to choose another word.
+    #
+    # * When a valid word is entered, it uses up letters from the hand.
+    #
+    # * After every valid word: the score for that word is displayed,
+    #   the remaining letters in the hand are displayed, and the user
+    #   is asked to input another word.
+    #
+    # * The sum of the word scores is displayed when the hand finishes.
+    #
+    # * The hand finishes when there are no more unused letters.
+    #   The user can also finish playing the hand by inputing a single
+    #   period (the string '.') instead of a word.
+    #
+    #   hand: dictionary (string -> int)
+    #   word_list: list of lowercase strings
+    #
+    # """
     # TO DO ...
 
 #
