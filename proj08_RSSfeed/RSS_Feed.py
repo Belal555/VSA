@@ -57,19 +57,40 @@ class NewsStory(object):
         * summary
         * link
     """
-    def __init__(self, guid):
-        """
-        Returns a NewsStory object with the following attributes
-        :param guid: a string that serves as a unique name for this entry 
-        :param title: string
-        :param subject: string
-        :param summary: string
-        :param link: string     
-        """
+    def __init__(self, guid, title, subject, summary, link):
         self.guid = guid
+        self.title = title
+        self.subject = subject
+        self.summary = summary
+        self.link = link
+
+        # """
+        # Returns a NewsStory object with the following attributes
+        # :param guid: a string that serves as a unique name for this entry
+        # :param title: string
+        # :param subject: string
+        # :param summary: string
+        # :param link: string
+        # """
+
 
     def get_guid(self):
         return self.guid
+    def get_title(self):
+        return self.title
+    def get_subject(self):
+        return self. subject
+    def get_summary(self):
+        return self.summary
+    def get_link(self):
+        return self.link
+
+# a1 = NewsStory("Guid", "Title", "Subject", "Summary", "Link" )
+# print a1.get_guid()
+# print a1.get_title()
+# print a1.get_subject()
+# print a1.get_summary()
+# print a1.get_link()
 
 # Your job is to write functions for the other 4 attributes.
 
@@ -78,6 +99,9 @@ class NewsStory(object):
 # Part 2
 # Triggers
 #======================
+
+import string
+print string.punctuation
 
 class Trigger(object):
     def evaluate(self, story):
@@ -105,8 +129,15 @@ class Trigger(object):
 # and it will return True if the word is in the text, False otherwise. This method
 # should not be case sensitive.
 
-
-
+class WordTrigger(Trigger):
+    def __init__(self, word):
+        self.word = word
+    def is_word_in(self, text):
+        
+        if self.word in text:
+            return True
+        else:
+            return False
 
 
 
@@ -193,6 +224,8 @@ import thread
 def main_thread(p):
     # A sample trigger list - you'll replace
     # this with something more configurable in Problem 11
+
+    #UNCOMMENT THESE
     t1 = SubjectTrigger("Trump")
     t2 = SummaryTrigger("Vanderbilt")
     t3 = PhraseTrigger("Net Neutrality")
@@ -229,9 +262,69 @@ def main_thread(p):
         print "Sleeping..."
         time.sleep(SLEEPTIME)
 
-SLEEPTIME = 60 #seconds -- how often we poll
-if __name__ == '__main__':
-    p = Popup()
-    thread.start_new_thread(main_thread, (p,))
-    p.start()
+#UNCOMMENT
+# SLEEPTIME = 60 #seconds -- how often we poll
+# if __name__ == '__main__':
+    # p = Popup()
+    # thread.start_new_thread(main_thread, (p,))
+    # p.start()
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # Classes
+#
+# # define class
+# class Person(object):
+#
+#     # methods
+#
+#     # initialize
+#     def __init__(self, name, age):
+#         # storing attributes
+#         self.name = name
+#         self.age = age
+#         self.living = True
+#
+#     # other methods
+#     def update_age(self):
+#         self.age = self.age + 1
+#
+#     # accessor method
+#     def get_age(self):
+#         return self.age
+#
+#
+# # creating a person
+# p1 = Person("Belal Hammad", 17)
+# print p1.get_age()  # calling a method
+# print p1.name
+#
+# p1.living = False
+# print p1.living
+#
+#
+# # Creating Subclasses
+# class Student(Person):
+#     def set_grade(self, grade):
+#         self.grade = grade
+#
+#     def years_until_graduate(self):
+#         return 13 - self.grade
+#
+#
+# s1 = Student("Morgan", 17)
+# s1.set_grade(12)
+# print s1.years_until_graduate()
