@@ -131,15 +131,21 @@ class Trigger(object):
 
 class WordTrigger(Trigger):
     def __init__(self, word):
-        self.word = word
+        self.word = word.lower()
     def is_word_in(self, text):
-        text = text.translate(None, string.punctuation)
+        # text = text.translate(None, string.punctuation)
+        text.replace(string.punctuation, " ")
+        for item in string.punctuation:
+            text = text.replace(item, " ")
         text = text.lower()
+        text = text.split(" ")
+        print text
+        print self.word
         if self.word in text:
-            print text
+            print True
             return True
         else:
-            print text
+            print False
             return False
 
 
@@ -194,18 +200,18 @@ class SummaryTrigger(WordTrigger):
 # TODO: AndTrigger
 # TODO: OrTrigger
 # #
-
-def NotTrigger(Trigger):
-    def __init__(self, word):
-    def evaluate(self, word):
-
-def AndTrigger(Trigger):
-    def __init__(self, word):
-    def evaluate(self, word):
-
-def OrTrigger(Trigger):
-    def __init__(self, word)
-    def evaluate(self, word):
+#
+# def NotTrigger(Trigger):
+#     def __init__(self, word):
+#     def evaluate(self, word):
+#
+# def AndTrigger(Trigger):
+#     def __init__(self, word):
+#     def evaluate(self, word):
+#
+# def OrTrigger(Trigger):
+#     def __init__(self, word)
+#     def evaluate(self, word):
 
 # Phrase Trigger
 # Question 9
@@ -214,13 +220,13 @@ def OrTrigger(Trigger):
 # method.
 # TODO: PhraseTrigger
 
-def PhraseTrigger(Trigger):
-    def evaluate(self, story):
-        phrase1 = story.get_phrase()
-        if self.word in phrase1:
-            return True
-        else:
-            return False
+# def PhraseTrigger(Trigger):
+#     def evaluate(self, story):
+#         phrase1 = story.get_phrase()
+#         if self.word in phrase1:
+#             return True
+#         else:
+#             return False
 
 #======================
 # Part 3
@@ -228,12 +234,12 @@ def PhraseTrigger(Trigger):
 #======================
 
 def filter_stories(stories, triggerlist):
-    def evaluate(self, )
-    """
-    Takes in a list of NewsStory-s.
-    Returns only those stories for whom
-    a trigger in triggerlist fires.
-    """
+    # def evaluate(self, )
+    # """
+    # Takes in a list of NewsStory-s.
+    # Returns only those stories for whom
+    # a trigger in triggerlist fires.
+    # """
     # TODO: Problem 10
     # This is a placeholder (we're just returning all the stories, with no filtering) 
     # Feel free to change this line!
@@ -316,62 +322,3 @@ def main_thread(p):
     # thread.start_new_thread(main_thread, (p,))
     # p.start()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# # Classes
-#
-# # define class
-# class Person(object):
-#
-#     # methods
-#
-#     # initialize
-#     def __init__(self, name, age):
-#         # storing attributes
-#         self.name = name
-#         self.age = age
-#         self.living = True
-#
-#     # other methods
-#     def update_age(self):
-#         self.age = self.age + 1
-#
-#     # accessor method
-#     def get_age(self):
-#         return self.age
-#
-#
-# # creating a person
-# p1 = Person("Belal Hammad", 17)
-# print p1.get_age()  # calling a method
-# print p1.name
-#
-# p1.living = False
-# print p1.living
-#
-#
-# # Creating Subclasses
-# class Student(Person):
-#     def set_grade(self, grade):
-#         self.grade = grade
-#
-#     def years_until_graduate(self):
-#         return 13 - self.grade
-#
-#
-# s1 = Student("Morgan", 17)
-# s1.set_grade(12)
-# print s1.years_until_graduate()
