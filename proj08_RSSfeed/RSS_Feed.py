@@ -133,10 +133,13 @@ class WordTrigger(Trigger):
     def __init__(self, word):
         self.word = word
     def is_word_in(self, text):
-        
+        text = text.translate(None, string.punctuation)
+        text = text.lower()
         if self.word in text:
+            print text
             return True
         else:
+            print text
             return False
 
 
@@ -155,6 +158,30 @@ class WordTrigger(Trigger):
 # TODO: SubjectTrigger
 # TODO: SummaryTrigger
 
+class TitleTrigger(WordTrigger):
+    def evaluate(self, story):
+        title1 =  story.get_title()
+        if self.is_word_in(title1):
+            return True
+        else:
+            return False
+
+
+class SubjectTrigger(WordTrigger):
+    def evaluate(self, story):
+        subject1 = story.get_subject()
+        if self.is_word_in(subject1):
+            return True
+        else:
+            return False
+
+class SummaryTrigger(WordTrigger):
+    def evaluate(self, story):
+        summary1 = story.get_summary()
+        if self.is_word_in(summary1):
+            return True
+        else:
+            return False
 
 # Composite Triggers
 # Problems 6-8
@@ -166,7 +193,19 @@ class WordTrigger(Trigger):
 # TODO: NotTrigger
 # TODO: AndTrigger
 # TODO: OrTrigger
+# #
 
+def NotTrigger(Trigger):
+    def __init__(self, word):
+    def evaluate(self, word):
+
+def AndTrigger(Trigger):
+    def __init__(self, word):
+    def evaluate(self, word):
+
+def OrTrigger(Trigger):
+    def __init__(self, word)
+    def evaluate(self, word):
 
 # Phrase Trigger
 # Question 9
@@ -175,6 +214,13 @@ class WordTrigger(Trigger):
 # method.
 # TODO: PhraseTrigger
 
+def PhraseTrigger(Trigger):
+    def evaluate(self, story):
+        phrase1 = story.get_phrase()
+        if self.word in phrase1:
+            return True
+        else:
+            return False
 
 #======================
 # Part 3
@@ -182,6 +228,7 @@ class WordTrigger(Trigger):
 #======================
 
 def filter_stories(stories, triggerlist):
+    def evaluate(self, )
     """
     Takes in a list of NewsStory-s.
     Returns only those stories for whom
