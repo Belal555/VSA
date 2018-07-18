@@ -100,8 +100,8 @@ class NewsStory(object):
 # Triggers
 #======================
 
-import string
-print string.punctuation
+# import string
+# print string.punctuation
 
 class Trigger(object):
     def evaluate(self, story):
@@ -133,19 +133,18 @@ class WordTrigger(Trigger):
     def __init__(self, word):
         self.word = word.lower()
     def is_word_in(self, text):
-        # text = text.translate(None, string.punctuation)
         text.replace(string.punctuation, " ")
         for item in string.punctuation:
             text = text.replace(item, " ")
         text = text.lower()
         text = text.split(" ")
-        print text
-        print self.word
+        # print text
+        # print self.word
         if self.word in text:
-            print True
+            # print True
             return True
         else:
-            print False
+            # print False
             return False
 
 
@@ -200,18 +199,27 @@ class SummaryTrigger(WordTrigger):
 # TODO: AndTrigger
 # TODO: OrTrigger
 # #
+
+
+class NotTrigger(Trigger):
+    def __init__(self, t):
+        self.t = t
+    def evaluate(self, story):
+        return not self.t.evaluate(story)
+
 #
-# def NotTrigger(Trigger):
-#     def __init__(self, word):
-#     def evaluate(self, word):
-#
-# def AndTrigger(Trigger):
-#     def __init__(self, word):
-#     def evaluate(self, word):
-#
-# def OrTrigger(Trigger):
-#     def __init__(self, word)
-#     def evaluate(self, word):
+class AndTrigger(Trigger):
+    def __init__(self, t1, t2):
+        self.t1 = t1
+        self.t2 = t2
+    def evaluate(self, story):
+        return self.t1.evaluate(story) and self.t2.evaluate(story)
+
+class OrTrigger(Trigger):
+    def __init__(self, v):
+        self.v = v
+    def evaluate(self, story):
+        return not self.v.evaluate(story)
 
 # Phrase Trigger
 # Question 9
@@ -220,13 +228,13 @@ class SummaryTrigger(WordTrigger):
 # method.
 # TODO: PhraseTrigger
 
-# def PhraseTrigger(Trigger):
-#     def evaluate(self, story):
-#         phrase1 = story.get_phrase()
-#         if self.word in phrase1:
-#             return True
-#         else:
-#             return False
+def PhraseTrigger(Trigger):
+    def evaluate(self, story):
+        phrase1 = story.get_phrase()
+        if self.phrase in phrase1:
+            return True
+        else:
+            return False
 
 #======================
 # Part 3
