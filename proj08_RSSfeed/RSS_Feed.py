@@ -216,10 +216,11 @@ class AndTrigger(Trigger):
         return self.t1.evaluate(story) and self.t2.evaluate(story)
 
 class OrTrigger(Trigger):
-    def __init__(self, v):
-        self.v = v
+    def __init__(self, t3, t4):
+        self.t3 = t3
+        self.t4 = t4
     def evaluate(self, story):
-        return not self.v.evaluate(story)
+        return self.t3.evaluate(story) or self.t4.evaluate(story)
 
 # Phrase Trigger
 # Question 9
@@ -228,13 +229,17 @@ class OrTrigger(Trigger):
 # method.
 # TODO: PhraseTrigger
 
-def PhraseTrigger(Trigger):
+class PhraseTrigger(Trigger):
+    def __init__(self, phrase):
+        self.phrase = phrase
+
     def evaluate(self, story):
-        phrase1 = story.get_phrase()
-        if self.phrase in phrase1:
-            return True
-        else:
-            return False
+        return (self.phrase) in story.get_subject() or (self.phrase) in story.get_title() or (self.phrase) in story.get_summary()
+        # phrase1 = story.get_phrase()
+        # if self.phrase in phrase1:
+        #     return True
+        # else:
+        #     return False
 
 #======================
 # Part 3
@@ -242,6 +247,20 @@ def PhraseTrigger(Trigger):
 #======================
 
 def filter_stories(stories, triggerlist):
+    storylist = []
+    c = 0
+    for Trigger in triggerlist:
+        for story in stories:
+            if Trigger.evaluate(story) == True:
+                if story not in storylist:
+                    storylist.append(story)
+
+            #     stories
+            # elif trigger not in story:
+            #     return
+            #
+    return storylist
+
     # def evaluate(self, )
     # """
     # Takes in a list of NewsStory-s.
@@ -251,7 +270,7 @@ def filter_stories(stories, triggerlist):
     # TODO: Problem 10
     # This is a placeholder (we're just returning all the stories, with no filtering) 
     # Feel free to change this line!
-    return stories
+
 
 #======================
 # Extensions: Part 4
@@ -323,10 +342,9 @@ def main_thread(p):
         print "Sleeping..."
         time.sleep(SLEEPTIME)
 
-#UNCOMMENT
-# SLEEPTIME = 60 #seconds -- how often we poll
-# if __name__ == '__main__':
-    # p = Popup()
-    # thread.start_new_thread(main_thread, (p,))
-    # p.start()
+SLEEPTIME = 60 #seconds -- how often we poll
+if __name__ == '__main__':
+    p = Popup()
+    thread.start_new_thread(main_thread, (p,))
+    p.start()
 
