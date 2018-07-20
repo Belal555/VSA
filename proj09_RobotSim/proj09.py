@@ -6,7 +6,7 @@ import math
 import random
 
 import proj09_visualize
-import pylab
+# import pylab
 
 # === Provided classes
 
@@ -229,10 +229,10 @@ def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
 
 # === Problem 4
 #
-# 1) How long does it take to clean 80% of a 20�20 room with each of 1-10 robots?
+# 1) How long does it take to clean 80% of a 20x20 noom with each of 1-10 robots?
 #
 # 2) How long does it take two robots to clean 80% of rooms with dimensions 
-#	 20�20, 25�16, 40�10, 50�8, 80�5, and 100�4?
+#	 20x20, 25x16, 40x10, 50x8, 80x5, and 100x4?
 
 def showPlot1():
     """
@@ -266,3 +266,54 @@ def showPlot3():
     Produces a plot comparing the two robot strategies.
     """
     raise NotImplementedError
+
+
+class Matrix(object):
+
+    def __init__(self, nrow, ncol):
+        self.nrow = nrow
+        self.ncol = ncol
+        self.entries = []
+        for i in range(0, ncol):
+            column = []
+            for j in range(0, nrow):
+                column.append(0)
+            self.entries.append(column)
+            print self.entries
+
+# my_mat = Matrix(4,4)
+# print my_mat.entries[1][2]
+
+    def fill(self, nums):
+        #nums is a list of lists containing the entries to go in the matrix
+        self.entries = nums
+    def get(self, row, col):
+        return self.entries [col-1][row-1]
+    def hello(self):
+        raise NotImplementedError
+
+class sqMatrix(Matrix):
+    def hello(self):
+        print 'hello, world'
+
+class even_dimensional_sqMatrix(sqMatrix):
+    def hello2(self):
+        print 'hello, universe'
+
+
+my_Mat = even_dimensional_sqMatrix(2,2)
+my_Mat.fill([[1,2], [3,4]])
+
+print my_Mat.entries[0][0]
+print my_Mat.get(1,1)
+print my_Mat.get(2,2)
+my_Mat.hello()
+my_Mat.hello2()
+
+# #1) create a list of "nrow" zeros called column
+# #2) create a blank list called entries
+# #3) append column
+
+# user = raw_input("Please enter a size:")
+# print user
+# print "ERROR TOO BIG"
