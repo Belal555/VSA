@@ -2,9 +2,9 @@
 # Name:
 # Date:
 
-import numpy
+# import numpy
 import random
-import pylab
+# import pylab
 
 ''' 
 Begin helper code
@@ -34,6 +34,7 @@ class SimpleVirus(object):
     """
 
     def __init__(self, maxBirthProb, clearProb):
+
         """
         Initialize a SimpleVirus instance, saves all parameters as attributes
         of the instance.        
@@ -42,6 +43,8 @@ class SimpleVirus(object):
         """
 
         # TODO
+        self.maxBirthProb = maxBirthProb
+        self.clearProb = clearProb
 
     def doesClear(self):
         """ Stochastically determines whether this virus particle is cleared from the
@@ -51,6 +54,13 @@ class SimpleVirus(object):
         """
 
         # TODO
+        num1 = random.randint(0, 100)
+        percent = self.clearProb * 100
+        print num1
+        if num1 < percent:
+            return True
+        else:
+            return False
 
     def reproduce(self, popDensity):
         """
@@ -73,7 +83,18 @@ class SimpleVirus(object):
         """
 
         # TODO
+        self.popDensity = popDensity
+        num2 = random.randint(0, 100)
+        probability = self.maxBirthProb * (1 - popDensity)
+        if num2 <= probability:
+            return SimpleVirus(self.maxBirthProb, self.clearProb)
+        else:
+            return NoChildException
 
+v = SimpleVirus(0.95, 0.05)
+print v.maxBirthProb
+print v.clearProb
+print v.doesClear()
 
 class SimplePatient(object):
     """
@@ -94,6 +115,9 @@ class SimplePatient(object):
         """
 
         # TODO
+        self.viruses = viruses
+        self.maxPop = maxPop
+
 
     def getTotalPop(self):
         """
@@ -102,6 +126,11 @@ class SimplePatient(object):
         """
 
         # TODO
+        population = self.maxPop
+        return population
+
+
+
 
     def update(self):
         """
@@ -120,6 +149,23 @@ class SimplePatient(object):
         """
 
         # TODO
+        virus = []
+        for virus in self.viruses:
+            if virus.doesClear():
+                self.viruses.remove(virus)
+            density = self.getTotalPop/self.maxPop
+            try:
+                self.viruses.append(virus.reproduce(density))
+            except NoChildException:
+                continue
+            return self.getTotalPop()
+
+s = SimplePatient(50, 100)
+print s.maxPop
+print s.viruses
+print s.getTotalPop()
+# print s.update()
+
 
 
 #
