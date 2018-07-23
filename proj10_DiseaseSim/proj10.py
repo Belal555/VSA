@@ -56,7 +56,7 @@ class SimpleVirus(object):
         # TODO
         num1 = random.randint(0, 100)
         percent = self.clearProb * 100
-        print num1
+        # print num1
         if num1 < percent:
             return True
         else:
@@ -83,18 +83,18 @@ class SimpleVirus(object):
         """
 
         # TODO
-        self.popDensity = popDensity
+        # self.popDensity = popDensity
         num2 = random.randint(0, 100)
-        probability = self.maxBirthProb * (1 - popDensity)
+        probability = (self.maxBirthProb * (1 - popDensity)) * 100
         if num2 <= probability:
             return SimpleVirus(self.maxBirthProb, self.clearProb)
         else:
-            return NoChildException
+            raise NoChildException
 
-v = SimpleVirus(0.95, 0.05)
-print v.maxBirthProb
-print v.clearProb
-print v.doesClear()
+# v = SimpleVirus(0.95, 0.05)
+# print v.maxBirthProb
+# print v.clearProb
+# print v.doesClear()
 
 class SimplePatient(object):
     """
@@ -127,7 +127,7 @@ class SimplePatient(object):
 
         # TODO
         population = self.maxPop
-        return population
+        return len(self.viruses)
 
 
 
@@ -149,23 +149,24 @@ class SimplePatient(object):
         """
 
         # TODO
-        virus = []
+        vlist = []
         for virus in self.viruses:
-            if virus.doesClear():
-                self.viruses.remove(virus)
-            density = self.getTotalPop/self.maxPop
-            try:
-                self.viruses.append(virus.reproduce(density))
-            except NoChildException:
-                continue
-            return self.getTotalPop()
+            if virus.doesClear() == False:
+                vlist.append(virus)
+                density = self.getTotalPop()/self.maxPop
+                try:
+                    vlist.append(virus.reproduce(density))
+                except NoChildException:
+                    continue
+        self.viruses = vlist
+        return self.getTotalPop()
 
-s = SimplePatient(50, 100)
-print s.maxPop
-print s.viruses
-print s.getTotalPop()
+# s = SimplePatient(50, 100)
+# print s.maxPop
+# print s.viruses
+# print s.getTotalPop()
 # print s.update()
-
+#
 
 
 #
@@ -180,3 +181,22 @@ def simulationWithoutDrug():
     """
 
     # TODO
+    virus =[]
+    list = []
+    virus2 = []
+    for j in range (0, 100):
+        virus2.append(SimpleVirus(0.1, 0.05))
+    p = SimplePatient(virus2, 1000)
+    for i in range(0, 300):
+        x= p.update()
+        # print x
+        virus.append(x)
+        list.append(i)
+    print virus
+    print list
+
+simulationWithoutDrug()
+
+
+
+
