@@ -6,22 +6,37 @@
 # Tests are created for you in proj11_test.py. Uncomment tests as you need them.
 # Otherwise, you could call a function that you haven't defined yet, and you would get an error.
 #
-# sumList(lst);
+def sumList(lst):
 # Task: compute the sum of a list of integers
 # Pre: lst is an list of 'size' integers, size is nonnegative
 # Post: the sum of lst[0]...lst[size-1] is returned
 # Challenge: This function could be done by dividing the list in half and performing recursive calls on each half (as opposed to just shrinking the size by one each time).
+    if len(lst) == 0:
+        return 0
+    elif len(lst) == 1:
+        return lst[0]
+    else:
+        lst[-1] = lst[0] + lst[-1]
+        lst.remove(lst[0])
+        return sumList(lst)
+
+# print sumList([1, 2, 3, 4, 5])
 
 
-
-# member(target, set);
+def member(target, set):
 # Task: determine if target is in the set
 # Pre: set is an list of 'size' integers, size is nonnegative
 # Post: true is returned if target is in the set, else false; the set is unchanged
+    if target in set[0:]:
+        return True
+    else:
+        return False
+
+print member(3, [1, 2, 3, 4, 5])
 
 
 
-# addStar(str);
+# addStar(str):
 # Given a string, compute recursively a new string where all the adjacent characters are now separated by a "*".
 # Pre: str is a string (may be empty).
 # Post: a correctly starred string is returned.
@@ -72,14 +87,14 @@
 
 
 
-# void reverseLst(lst, first, last);
+# void reverseLst(lst, first, last):
 # Task: reverse the contents of lst[first]...lst[last]
 # Pre: 'lst' is a list of at least 'last'+1 integers, first & last are nonnegative
 # Post: the elements lst[first]...lst[last]have been reversed.
 
 
 
-# convert2Binary(num);
+# convert2Binary(num):
 # Task: produce the binary representation of a decimal number
 # A decimal number is converted to binary by repeated division by 2.
 # For each division, keep track of the quotient and remainder.
@@ -91,7 +106,7 @@
 
 
 
-# void printPattern (num);
+# void printPattern (num):
 # Task: Print a pseudo hourglass pattern on the screen
 # Pre: num is a positive integer
 # Post: the desired pattern is displayed on print
@@ -110,7 +125,7 @@
 
 
 
-# void lstInitialize(lst, value, lb, ub);
+# void lstInitialize(lst, value, lb, ub):
 # Task: initialize all elements of the lst between indices lb and ub to the given value, including the elements at lb & ub
 # Note: lb = lower bound, ub = upper bound
 # Pre: lb and ub are valid indices into the list a [the actual size of the lst is unknown]
@@ -164,3 +179,33 @@ How would you write tests for these functions?
 # moveXs("xxre") --> "rexx"
 # moveXs("xxhixx") --> "hixxxx"
 # moveXs("xhixhix") --> "hihixxx"
+
+# #recursion
+# def print_x_times(x, string):
+#     #base case
+#     if x == 1:
+#         print x, " ", string
+#     #all other cases
+#     else:
+#         print x, " ", string
+#         #recursive call to self
+#         print_x_times(x-1, string)
+#
+# print_x_times(8, "cat")
+
+# def palindrome(string):
+#     #base case
+#     print string
+#     if len(string) <= 1:
+#         print "This is a palindrome"
+#         return True
+#     #other cases
+#     elif string[0] != string[-1]:
+#         print "This is not a palindrome"
+#         return False
+#     else:
+#         #recursice call to self
+#         palindrome(string[1:-1])
+#
+# palindrome("banana")
+# palindrome("racecar")
