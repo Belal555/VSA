@@ -23,16 +23,24 @@ def sumList(lst):
 # print sumList([1, 2, 3, 4, 5])
 
 
-def member(target, set):
+# def member(target, set):
+#     if target in set[0:]:
+#         return True
+#     else:
+#         return False
 # Task: determine if target is in the set
 # Pre: set is an list of 'size' integers, size is nonnegative
 # Post: true is returned if target is in the set, else false; the set is unchanged
-    if target in set[0:]:
-        return True
-    else:
-        return False
-
-print member(3, [1, 2, 3, 4, 5])
+# def member(target, set):
+#     if len(set) == 0:
+#         return False
+#     if target == set[0]:
+#         return True
+#     else:
+#         set = set[1:]
+#         return member(target, set)
+#
+# print member(3, [1, 2, 3, 4, 5])
 
 
 
