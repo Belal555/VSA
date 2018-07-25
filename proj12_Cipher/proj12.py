@@ -124,6 +124,16 @@ def build_coder(shift):
     (The order of the key-value pairs may be different.)
     """
     ### TODO.
+    lowercase_alphabet =
+    uppercase_alphabet =
+    cipher = {}
+    if shift == 0:
+        return cipher
+    if shift >= 1:
+        return cipher[0:] + build_coder(shift)
+
+print build_coder(2)
+
 
 def build_encoder(shift):
     """
