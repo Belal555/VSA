@@ -111,15 +111,17 @@ def replace(target, replacement, numbers, size):
 # Pre: 'numbers' is an list of 'size' integers, size is nonnegative
 # Post: all occurrences of 'target' in 'numbers' have been replaced  with 'replacement';
 # the number of replacements performed is returned to the caller.
-    if len(numbers) == 0:
-        return "No list"
-    if target == set[0]:
-        return
+    if size == 0:
+        return 0
+    if target == numbers[size - 1]:
+        numbers[size - 1] = replacement
+        return 1 + replace(target, replacement, numbers, size-1)
+    else:
+        return replace(target, replacement, numbers, size-1)
 
-user = raw_input()
-print 
+# print replace(3, 5, [1, 2, 3], 3)
 
-# g_c_d(x, y);
+def g_c_d(x, y):
 # Task: compute the Greatest Common Divisor (GCD) of two nonnegative integers using
 # Euclid's formula:
 # Euclid's method for computing the greatest common divisor (GCD) of two nonnegative
