@@ -139,16 +139,16 @@ def reverseLst(lst, first, last):
 # Task: reverse the contents of lst[first]...lst[last]
 # Pre: 'lst' is a list of at least 'last'+1 integers, first & last are nonnegative
 # Post: the elements lst[first]...lst[last]have been reversed.
-    if first in lst[0] and last in lst[-1]:
-        last = lst[0]
-        first = lst[-1]
+    first = lst[0]
+    last = lst[-1]
+    if len(lst) == 0:
         return lst
+    if len(lst) == 1:
+        return lst
+    if len(lst) == 2:
+        return last, first
     else:
-        lst.remove(first)
-        lst.remove(last)
-        lst.append(first)[-1]
-        lst.append(last)[0]
-        reverseLst
+
 
 
 
