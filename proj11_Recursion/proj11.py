@@ -31,20 +31,20 @@ def sumList(lst):
 # Task: determine if target is in the set
 # Pre: set is an list of 'size' integers, size is nonnegative
 # Post: true is returned if target is in the set, else false; the set is unchanged
-# def member(target, set):
-#     if len(set) == 0:
-#         return False
-#     if target == set[0]:
-#         return True
-#     else:
-#         set = set[1:]
-#         return member(target, set)
+def member(target, set):
+    if len(set) == 0:
+        return False
+    if target == set[0]:
+        return True
+    else:
+        set = set[1:]
+        return member(target, set)
 #
 # print member(3, [1, 2, 3, 4, 5])
 
 
-
-# addStar(str):
+ 
+def addStar(str):
 # Given a string, compute recursively a new string where all the adjacent characters are now separated by a "*".
 # Pre: str is a string (may be empty).
 # Post: a correctly starred string is returned.
@@ -52,34 +52,72 @@ def sumList(lst):
 # addStar("hello") --> "h*e*l*l*o"
 # addStar("abc") --> "a*b*c"
 # addStar("ab") --> "a*b"
+    if len(str) == 0:
+        return str
+    if len(str) == 1:
+        return str
+    if len(str) == 2:
+        return str[0] + "*" + str[1]
+    else:
+        return str[0] + "*" + addStar(str[1:])
 
+# print addStar("string")
 
-
-# harmonicSum(n);
+def harmonicSum(n):
 # Task: compute the sum of the first n harmonic terms
 # Pre: n is a positive integer
 # Post: the sum of the first n harmonic terms is returned.
 # The harmonic series is 1 + (1/2) + (1/3) + (1/4) + ...
+    if n == 0:
+        return 0
+    if n == 1.0:
+        return 1.0
+    else:
+        return 1.0/float(n) + harmonicSum(n-1)
+    # if n == 2:
+    #     return 1 + 1/2
+    # if n >= 2:
+    #     return
+
+# print harmonicSum(6)
 
 
 
-# isPalindrome(str);
+
+
+
+def isPalindrome(str):
 # Task: determine if a string is a palindrome
 # Pre: str is a string object
 # Post: returns true if str is a palindrome, otherwise returns false
 # The test is case insensitive (user .upper() & .lower()).
 # You do not need to worry about trimming blanks from the ends of the string.
 # Note: the empty string is a palindrome
+    str = str.replace(" ", "")
+    str = str.lower()
+    if len(str) <= 1:
+        print "This is a palindrome"
+        return True
+    elif str[0] != str[-1]:
+        print "This is not a palindrome"
+        return False
+    else:
+        return isPalindrome(str[1:-1])
 
+# print isPalindrome("racecar")
 
-
-# replace(target, replacement, numbers, size);
+def replace(target, replacement, numbers, size):
 # Task: replace all occurrences of 'target' in the list 'numbers'with 'replacement'
 # Pre: 'numbers' is an list of 'size' integers, size is nonnegative
 # Post: all occurrences of 'target' in 'numbers' have been replaced  with 'replacement';
 # the number of replacements performed is returned to the caller.
+    if len(numbers) == 0:
+        return "No list"
+    if target == set[0]:
+        return
 
-
+user = raw_input()
+print 
 
 # g_c_d(x, y);
 # Task: compute the Greatest Common Divisor (GCD) of two nonnegative integers using
@@ -140,11 +178,11 @@ def sumList(lst):
 # Post: the list elements in the segment a[lb..ub] have been set to value
 # Challenge: This function must be done by dividing the list segment in half and performing recursive calls on each half (as opposed to just shrinking the array bound by one each time)
 
-"""
-Extensions:
-Here are some more to try on your own! These do not come with tests...
-How would you write tests for these functions?
-"""
+# """
+# Extensions:
+# Here are some more to try on your own! These do not come with tests...
+# How would you write tests for these functions?
+# """
 
 # binomialCoeff (n, r);
 # Task: Compute the Binomial Coefficient using Pascal's Triangle.
@@ -214,6 +252,6 @@ How would you write tests for these functions?
 #     else:
 #         #recursice call to self
 #         palindrome(string[1:-1])
-#
+
 # palindrome("banana")
 # palindrome("racecar")
