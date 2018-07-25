@@ -121,7 +121,7 @@ def replace(target, replacement, numbers, size):
 
 # print replace(3, 5, [1, 2, 3], 3)
 
-def g_c_d(x, y):
+# def g_c_d(x, y):
 # Task: compute the Greatest Common Divisor (GCD) of two nonnegative integers using
 # Euclid's formula:
 # Euclid's method for computing the greatest common divisor (GCD) of two nonnegative
@@ -135,10 +135,20 @@ def g_c_d(x, y):
 
 
 
-# void reverseLst(lst, first, last):
+def reverseLst(lst, first, last):
 # Task: reverse the contents of lst[first]...lst[last]
 # Pre: 'lst' is a list of at least 'last'+1 integers, first & last are nonnegative
 # Post: the elements lst[first]...lst[last]have been reversed.
+    if first in lst[0] and last in lst[-1]:
+        last = lst[0]
+        first = lst[-1]
+        return lst
+    else:
+        lst.remove(first)
+        lst.remove(last)
+        lst.append(first)[-1]
+        lst.append(last)[0]
+        reverseLst
 
 
 
