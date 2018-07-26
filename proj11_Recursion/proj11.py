@@ -139,17 +139,20 @@ def reverseLst(lst, first, last):
 # Task: reverse the contents of lst[first]...lst[last]
 # Pre: 'lst' is a list of at least 'last'+1 integers, first & last are nonnegative
 # Post: the elements lst[first]...lst[last]have been reversed.
-    first = lst[0]
-    last = lst[-1]
-    if len(lst) == 0:
+    if first == last:
         return lst
-    if len(lst) == 1:
+    elif first > last:
         return lst
-    if len(lst) == 2:
-        return last, first
-    else:
 
+    x = lst[first]
+    y = lst[last]
 
+    lst[first] = y
+    lst[last] = x
+
+    return reverseLst(lst, first + 1, last - 1)
+
+# print reverseLst([1, 2, 3, 4, 5, ], 1, 5)
 
 
 # convert2Binary(num):
