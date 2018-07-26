@@ -5,9 +5,9 @@
 
 
 
-import numpy
+# import numpy
 import random
-import pylab
+# import pylab
 from proj10 import *
 
 #
@@ -41,7 +41,10 @@ class ResistantVirus(SimpleVirus):
 
 
         # TODO
-
+        self.maxBirthProb = maxBirthProb
+        self.clearProb = clearProb
+        self.resistances = resistances
+        self.mutProb = mutProb
 
 
     def isResistantTo(self, drug):
@@ -57,6 +60,10 @@ class ResistantVirus(SimpleVirus):
         """
 
         # TODO
+        if self.resistances[drug] == True:
+            return True
+        else:
+            return False
 
 
     def reproduce(self, popDensity, activeDrugs):
